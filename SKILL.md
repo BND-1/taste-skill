@@ -8,13 +8,13 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 ## 1. DEFAULT ARCHITECTURE & CONVENTIONS
 Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
 
-* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). Use Client Components (`"use client"`) strictly at the leaf level. **Never** use arbitrary Vanilla JS DOM manipulation (e.g., `document.querySelector`, `el.addEventListener`). Use `useRef` and `useEffect` for DOM events, or prefer `framer-motion` for complex physical animations. `useEffect` cleanup functions are mandatory to prevent Virtual DOM conflicts and memory leaks.
-* **Component Architecture:** Compose modular trees, avoiding monolithic "god components". Organize intuitively:
-  * Layout/Sections: `/components/sections/*` (e.g. `TableSection`)
-  * UI Primitives / Complex Compounds: `/components/ui/*` (e.g. `DataTable`, `ActionMenu`)
-* **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state (Zustand/Context) to avoid painful prop-drilling in deep component trees (e.g., an audio player controlled from distant child components).
-* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. Use raw CSS (or CSS Modules) ONLY for complex `@keyframes`, `clamp()` typography, and pseudo-element grain filters.
-    * **⚠️ T4 CONFIG GUARD:** If using **Tailwind v4**, do NOT use the `tailwindcss` plugin in `postcss.config.js`. You MUST use `@tailwindcss/postcss`. For Vite projects, prefer the official `@tailwindcss/vite` plugin in `vite.config.ts` for zero-config simplicity.
+* **⚠️ DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
+* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). 
+    * **⚠️ RSC SAFETY:** Global state (Context/Zustand) works ONLY in Client Components. In Next.js, you MUST wrap global state providers in a separate `"use client"` component (e.g. `providers.tsx`) before including them in the `layout.tsx` tree.
+* **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state strictly for deep prop-drilling avoidance.
+* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. 
+    * **⚠️ TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
+    * **⚠️ T4 CONFIG GUARD:** For v4, do NOT use `tailwindcss` plugin in `postcss.config.js`. Use `@tailwindcss/postcss` or the Vite plugin.
 * **Responsiveness & Spacing:**
   * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
   * Contain page layouts using `max-w-7xl mx-auto`.
@@ -35,7 +35,8 @@ Controls symmetry and layout offsets.
 Controls animation complexity *working within the pre-defined project dependencies*.
 * **1-3 (Static):** No automatic animations. CSS `:hover` and `:active` states only.
 * **4-7 (Fluid CSS):** Use `transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1)`. Use `animation-delay` cascades for load-ins. Focus strictly on `transform` and `opacity`. **Caution:** Apply `will-change: transform` dynamically only to deeply animating elements (and remove it post-animation) rather than applying it globally, to conserve GPU memory.
-* **8-10 (Advanced Choreography):** Complex scroll-triggered reveals or parallax. **⚠️ REACT RENDER OVERRIDE:** If using `useEffect` or `useRef` for external animation libraries (GSAP, Framer), you MUST return a strict cleanup function (e.g., `ctx.revert()`, observer disconnects) to prevent catastrophic memory leaks.
+* **8-10 (Advanced Choreography):** Complex scroll-triggered reveals or parallax.
+    * **⚠️ PERFORMANCE GUARD:** NEVER use `window.addEventListener('scroll')` in React. Use exclusively Framer Motion hooks like `useScroll` or `IntersectionObserver`. For parallax, map scroll progress to `useTransform`.
 
 ### [ VISUAL_DENSITY: 4 ]
 Controls spacing tokens and typography tracking.
@@ -47,27 +48,30 @@ Controls spacing tokens and typography tracking.
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:
 
 **Rule 1: Deterministic Typography**
-* **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none` unless the specific layout or brand context explicitly demands otherwise. Pair a distinct display weight with a highly legible body weight.
+* **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none`.
+    * **⚠️ ANTI-SLOP:** Discourage `Inter` for "Premium" or "Creative" vibes. Force unique character using `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi`.
 * **Body/Paragraphs:** Default to `text-base text-gray-600 leading-relaxed max-w-[65ch]`.
-* **Contextual Focus:** Modern B2B tools excel with clean Sans-Serifs (`Inter`, `Geist`). Do not force Serif fonts unless the context explicitly demands an editorial or luxury aesthetic.
 
 **Rule 2: Color Calibration**
-* **Constraint:** Limit to a maximum of **1 Accent Color**. Keep accent saturation below 80% to maintain a premium feel.
-* **Neutrals:** Stick strictly to the standard neutral scales (e.g., Tailwind `gray-50` to `gray-900` or `zinc`). 
-* **Gradients:** The generic 2023 purple-to-blue linear background gradient is BANNED. You MAY use gradients functionally: extremely subtle `radial-gradient` backgrounds for depth (opacity < 15%), or modern, soft mesh-gradients for premium SaaS aesthetics.
+* **Constraint:** Max 1 Accent Color. Saturation < 80%.
+* **⚠️ THE LILA BAN:** The "AI Purple/Blue" glow aesthetic is strictly BANNED for SaaS/Business contexts. No purple button glows, no neon gradients. Use professional, high-contrast neutrals (Zinc/Slate) with sharp, singular accents (e.g. Emerald, Electric Blue, or Deep Rose).
+* **Gradients:** Mesh-gradients allowed. Purple-to-blue linear gradients are BANNED.
 
-**Rule 3: Materiality, Shadows, and "Anti-Card Overuse"**
+**Rule 3: Layout Diversification**
+* **⚠️ ANTI-CENTER BIAS:** Centered Hero/H1 sections are strictly BANNED when `LAYOUT_VARIANCE > 4`. Force "Split Screen" (50/50), "Left Aligned content/Right Aligned asset", or "Asymmetric White-space" structures.
+
+**Rule 4: Materiality, Shadows, and "Anti-Card Overuse"**
 * **Constraint:** Standard `box-shadow: rgba(0,0,0,0.1)` is outdated. Do not habitually wrap every section in a bordered card.
 * **Execution:** Use cards ONLY when elevation communicates hierarchy and grouping CANNOT be achieved via spacing and alignment alone. When a shadow is used, tint it to the background hue (e.g., `shadow-[0_8px_30px_rgba(14,30,37,0.12)]`), or use crisp `1px solid var(--border-color)` lines. 
 
-**Rule 4: Interactive UI States**
+**Rule 5: Interactive UI States**
 * **Mandatory Generation:** LLMs naturally generate "static" successful states. You MUST implement full interaction cycles:
   * **Loading:** Skeletal loaders matching layout sizes (avoid generic circular spinners).
   * **Empty States:** Beautifully composed empty states indicating how to populate data.
   * **Error States:** Clear, inline error reporting (e.g., forms).
   * **Tactile Feedback:** On `:active`, use `-translate-y-[1px]` or `scale-[0.98]` to simulate a physical push indicating success/action.
 
-**Rule 5: Data & Form Patterns**
+**Rule 6: Data & Form Patterns**
 * **Forms:** Label MUST sit above input. Helper text is optional but should exist in markup. Error text below input. Use a standard `gap-2` for input blocks.
 
 ## 4. CREATIVE PROACTIVITY (Anti-Slop Implementation)
