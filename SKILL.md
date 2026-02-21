@@ -13,7 +13,8 @@ Unless the user explicitly specifies a different stack, adhere to these structur
   * Layout/Sections: `/components/sections/*` (e.g. `TableSection`)
   * UI Primitives / Complex Compounds: `/components/ui/*` (e.g. `DataTable`, `ActionMenu`)
 * **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state (Zustand/Context) to avoid painful prop-drilling in deep component trees (e.g., an audio player controlled from distant child components).
-* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling (layout, colors, spacing). Use raw CSS (or CSS Modules) ONLY for complex `@keyframes`, `clamp()` typography, and pseudo-element grain filters where inline Tailwind strings become unreadable or impossible.
+* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. Use raw CSS (or CSS Modules) ONLY for complex `@keyframes`, `clamp()` typography, and pseudo-element grain filters.
+    * **⚠️ T4 CONFIG GUARD:** If using **Tailwind v4**, do NOT use the `tailwindcss` plugin in `postcss.config.js`. You MUST use `@tailwindcss/postcss`. For Vite projects, prefer the official `@tailwindcss/vite` plugin in `vite.config.ts` for zero-config simplicity.
 * **Responsiveness & Spacing:**
   * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
   * Contain page layouts using `max-w-7xl mx-auto`.

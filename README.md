@@ -26,29 +26,23 @@ Before running the agent, you can configure internal variables (1-10) directly i
 
 ---
 
-## Configuration Profiles (Examples)
-Use these presets to instantly toggle the visual character of the output:
+## Usage Examples (Test Prompts)
+Copy and paste these prompts into your agent to see **Design Taste** in action:
 
-### 1. High-End Creative (The "Showcase" Look)
-**Best for:** Portfolios, Brand Launches, Experimental Landing Pages.
-- **`DESIGN_VARIANCE: 9`** (Wilde Asymmetrie, Masonry-Layouts, überlappende Sektionen)
-- **`MOTION_INTENSITY: 8`** (GSAP-Parallax, Staggered Orchestration, magnetische Buttons)
-- **`VISUAL_DENSITY: 2`** (Extremer Weißraum, massive Headlines, Editorial-Stil)
-- **Result:** Ein visuelles Erlebnis, das wie eine digitale Kunst-Installation wirkt.
+### 1. The "Creative Showcase"
+**Config:** `VARIANCE: 9`, `MOTION: 8`, `DENSITY: 2`
+> **Prompt:** 
+> "Use **Design Taste** (`SKILL.md`) with the config above. Build a 4-section portfolio (Hero, Gallery, Process, Contact) for an avant-garde fashion photographer. Style should be experimental and high-contrast, featuring massive typography and magnetic scroll reveals."
 
-### 2. Balanced Premium (The "Modern SaaS" Look)
-**Best for:** Startups, Marketing-Pages, Professional Services.
-- **`DESIGN_VARIANCE: 5`** (Leichte Offsets, subtile Überlappungen, aber klarer Flow)
-- **`MOTION_INTENSITY: 5`** (Flüssige CSS-Transitions, sanfte Load-Ins, tactile Hover-States)
-- **`VISUAL_DENSITY: 5`** (Standardisierte Abstände, sehr gute Lesbarkeit)
-- **Result:** Hochmodern, vertrauenerweckend und extrem "polished" – wie ein Stripe- oder Linear-Produkt.
+### 2. The "Premium SaaS"
+**Config:** `VARIANCE: 5`, `MOTION: 5`, `DENSITY: 5`
+> **Prompt:** 
+> "Use **Design Taste** (`SKILL.md`) with the config above. Build a 5-section landing page (Hero, Problem, Features, Social Proof, CTA) for a high-end AI productivity app. Style should be 'Stripe-like', extremely polished, and clean, using refined spacing and subtle gradients."
 
-### 3. Minimalist Standard (The "Utility" Look)
-**Best for:** Dashboards, Dokumentationen, Interne Tools.
-- **`DESIGN_VARIANCE: 2`** (Strikte Symmetrie, klassischer 12-Spalten-Grid)
-- **`MOTION_INTENSITY: 2`** (Nur essentielle Interaktionen, Fokus auf Geschwindigkeit)
-- **`VISUAL_DENSITY: 8`** (Hohe Informationsdichte, kompakte Listen, Mono-Fonts für Daten)
-- **Result:** Funktional, schnell und übersichtlich. Sieht "normal" aus, aber durch die Design-Taste Regeln ohne den billigen AI-Beigeschmack.
+### 3. The "Utility Dashboard"
+**Config:** `VARIANCE: 1`, `MOTION: 2`, `DENSITY: 8`
+> **Prompt:** 
+> "Use **Design Taste** (`SKILL.md`) with the config above. Build a 3-section dashboard (Overview, Detailed Data, Settings) for a server monitoring system. Style should be strict, symmetrical, and data-dense, using Monospace fonts for metrics and skeletal loaders."
 
 ---
 
