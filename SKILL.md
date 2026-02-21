@@ -26,8 +26,9 @@ Unless the user explicitly specifies a different stack, adhere to these structur
 * **ANTI-EMOJI POLICY [CRITICAL]:** NEVER use emojis in code, markup, text content, or alt text. Replace symbols with high-quality icons (Radix, Phosphor) or clean SVG primitives. Emojis are BANNED.
 * **Responsiveness & Spacing:**
   * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
-  * Contain page layouts using `max-w-7xl mx-auto`.
-  * Adhere strictly to a 4px baseline grid (e.g., standardizing on Tailwind's `gap-4`, `p-8` scales).
+  * Contain page layouts using `max-w-[1400px] mx-auto` or `max-w-7xl`.
+  * **Viewport Stability [CRITICAL]:** NEVER use `h-screen` for full-height Hero sections. ALWAYS use `min-h-[100dvh]` to prevent catastrophic layout jumping on mobile browsers (iOS Safari).
+  * **Grid over Flex-Math:** NEVER use complex flexbox percentage math (`w-[calc(33%-1rem)]`). ALWAYS use CSS Grid (`grid grid-cols-1 md:grid-cols-3 gap-6`) for reliable structures.
 * **Icons:** You MUST use exactly `@phosphor-icons/react` or `@radix-ui/react-icons` as the import paths (check installed version). Standardize `strokeWidth` globally (e.g., exclusively use `1.5` or `2.0`).
 
 
@@ -73,8 +74,9 @@ To actively combat generic AI designs, systematically implement these high-end c
 ## 5. PERFORMANCE GUARDRAILS
 * **DOM Cost:** Apply grain/noise filters exclusively to fixed, pointer-event-none pseudo-elements (e.g., `fixed inset-0 z-50 pointer-events-none`) and NEVER to scrolling containers to prevent continuous GPU repaints and mobile performance degradation.
 * **Hardware Acceleration:** Never animate `top`, `left`, `width`, or `height`. Animate exclusively via `transform` and `opacity`.
+* **Z-Index Restraint:** NEVER spam arbitrary `z-50` or `z-10` unprompted. Use z-indexes strictly for systemic layer contexts (Sticky Navbars, Modals, Overlays).
 
-## 7. TECHNICAL REFERENCE (Dial Definitions)
+## 6. TECHNICAL REFERENCE (Dial Definitions)
 
 ### DESIGN_VARIANCE (Level 1-10)
 * **1-3 (Predictable):** Flexbox `justify-center`, strict 12-column symmetrical grids, equal paddings.
@@ -92,7 +94,7 @@ To actively combat generic AI designs, systematically implement these high-end c
 * **4-7 (Standard Application):** `py-12` section padding.
 * **8-10 (High-Performance HUD):** `py-2` to `py-4`. No cards; use 1px rule lines. **Mandatory:** Use Monospace (`font-mono`) for ALL metrics.
 
-## 8. THE 100 AI TELLS (Forbidden Patterns)
+## 7. THE 100 AI TELLS (Forbidden Patterns)
 To guarantee a premium, non-generic output, you MUST strictly avoid these common AI design signatures unless explicitly requested:
 
 ### Visual & CSS
@@ -123,7 +125,7 @@ To guarantee a premium, non-generic output, you MUST strictly avoid these common
 * **shadcn/ui Customization:** You may use `shadcn/ui`, but NEVER in its generic default state. You MUST customize the radii, colors, and shadows to match the high-end project aesthetic.
 * **Production-Ready Cleanliness:** Code must be extremely clean, visually striking, memorable, and meticulously refined in every detail.
 
-## 9. THE CREATIVE ARSENAL (High-End Inspiration)
+## 8. THE CREATIVE ARSENAL (High-End Inspiration)
 Do not default to generic UI. Pull from this library of advanced concepts to ensure the output is visually striking and memorable. When appropriate, leverage **GSAP (ScrollTrigger/Parallax)** for complex scrolltelling or **ThreeJS/WebGL** for 3D/Canvas animations, rather than basic CSS motion. **CRITICAL:** Never mix GSAP/ThreeJS with Framer Motion in the same component tree. Default to Framer Motion for UI/Bento interactions. Use GSAP/ThreeJS EXCLUSIVELY for isolated full-page scrolltelling or canvas backgrounds, wrapped in strict useEffect cleanup blocks.
 
 ### The Standard Hero Paradigm
@@ -187,7 +189,7 @@ Do not default to generic UI. Pull from this library of advanced concepts to ens
 * **Mesh Gradient Background:** Organic, lava-lamp-like animated color blobs.
 * **Lens Blur Depth:** Dynamic focus blurring background UI layers to highlight a foreground action.
 
-## 10. THE "MOTION-ENGINE" BENTO PARADIGM
+## 9. THE "MOTION-ENGINE" BENTO PARADIGM
 When generating modern SaaS dashboards or feature sections, you MUST utilize the following "Bento 2.0" architecture and motion philosophy. This goes beyond static cards and enforces a "Vercel-core meets Dribbble-clean" aesthetic heavily reliant on perpetual physics.
 
 ### A. Core Design Philosophy
@@ -213,10 +215,11 @@ Implement these specific micro-animations when constructing Bento grids (e.g., R
 4. **The Wide Data Stream:** A horizontal "Infinite Carousel" of data cards or metrics. Ensure the loop is seamless (using `x: ["0%", "-100%"]`) with a speed that feels effortless.
 5. **The Contextual UI (Focus Mode):** A document view that animates a staggered highlight of a text block, followed by a "Float-in" of a floating action toolbar with micro-icons.
 
-## 11. FINAL PRE-FLIGHT CHECK
+## 10. FINAL PRE-FLIGHT CHECK
 Evaluate your code against this matrix before outputting. This is the **last** filter you apply to your logic.
 - [ ] Is global state used appropriately to avoid deep prop-drilling rather than arbitrarily?
 - [ ] Is mobile layout collapse (`w-full`, `px-4`, `max-w-7xl mx-auto`) guaranteed for high-variance designs?
+- [ ] Do full-height sections safely use `min-h-[100dvh]` instead of the bugged `h-screen`?
 - [ ] Do `useEffect` animations contain strict cleanup functions?
 - [ ] Are empty, loading, and error states provided?
 - [ ] Are cards omitted in favor of spacing where possible?
