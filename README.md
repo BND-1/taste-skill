@@ -6,7 +6,7 @@ A skill for AI coding agents to build high-end, premium frontend interfaces. The
 
 ## How It Works
 
-This repository contains the **High-Agency Frontend Skill** (`SKILL_v2.md`), which serves as a hardcore prompt and rulebook for LLM-based coding agents (like Claude, Cursor, v0, etc.).
+This repository contains the **High-Agency Frontend Skill** (`SKILL.md`), which serves as a hardcore prompt and rulebook for LLM-based coding agents (like Claude, Cursor, v0, etc.).
 
 Instead of just telling the AI "don't make it look bad," this skill establishes a deterministic engineering framework:
 - **Strict Component Architecture:** Prevents "God Components" by enforcing modular React trees and strict Layout vs. UI Primitive separation.
@@ -51,7 +51,7 @@ git clone https://github.com/Leonxlnx/taste-skill.git "$HOME\.agent\skills\taste
 
 Simply point your agent to the skill file and configure your dials:
 
-> "Read `.agent/skills/taste-skill/SKILL_v2.md`. Set VISUAL_DENSITY to 8 and MOTION_INTENSITY to 5. Build a data-heavy Fintech Dashboard."
+> "Read `.agent/skills/taste-skill/SKILL.md`. Set VISUAL_DENSITY to 8 and MOTION_INTENSITY to 5. Build a data-heavy Fintech Dashboard."
 
 ---
 
