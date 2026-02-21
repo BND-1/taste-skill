@@ -5,24 +5,7 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 
 # High-Agency Frontend Skill
 
-## 1. DEFAULT ARCHITECTURE & CONVENTIONS
-Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
-
-* **DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
-* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). 
-    * **RSC SAFETY:** Global state (Context/Zustand) works ONLY in Client Components. In Next.js, you MUST wrap global state providers in a separate `"use client"` component (e.g. `providers.tsx`) before including them in the `layout.tsx` tree.
-* **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state strictly for deep prop-drilling avoidance.
-* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. 
-    * **TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
-    * **T4 CONFIG GUARD:** For v4, do NOT use `tailwindcss` plugin in `postcss.config.js`. Use `@tailwindcss/postcss` or the Vite plugin.
-* **ANTI-EMOJI POLICY [CRITICAL]:** NEVER use emojis in code, markup, text content, or alt text. Replace symbols with high-quality icons (Radix, Phosphor) or clean SVG primitives. Emojis are BANNED.
-* **Responsiveness & Spacing:**
-  * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
-  * Contain page layouts using `max-w-7xl mx-auto`.
-  * Adhere strictly to a 4px baseline grid (e.g., standardizing on Tailwind's `gap-4`, `p-8` scales).
-* **Icons:** Phosphor Icons or Radix UI Icons. **Mandatory:** Standardize `strokeWidth` globally (e.g., exclusively use `1.5` or `2.0`).
-
-## 2. SKILL CONFIGURATION (Quantitative Dials)
+## 1. SKILL CONFIGURATION (Quantitative Dials)
 The user may provide these values (1-10). They dictate your CSS output metrics and layout choices.
 
 ### [ DESIGN_VARIANCE: 6 ]
@@ -44,6 +27,24 @@ Controls spacing tokens and typography tracking.
 * **1-3 (Editorial):** `py-24` or `py-32` section padding. Airy, massive whitespace.
 * **4-7 (Standard Application):** `py-12` section padding.
 * **8-10 (High-Performance HUD):** `py-2` to `py-4`. No cards; use 1px rule lines (`border-b`, `divide-y`). **Mandatory:** Use Monospace (`font-mono`) for ALL numerical data and metrics. 
+
+## 2. DEFAULT ARCHITECTURE & CONVENTIONS
+Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
+
+* **DEPENDENCY VERIFICATION [MANDATORY]:** Before importing ANY 3rd party library (e.g. `framer-motion`, `lucide-react`, `zustand`), you MUST check `package.json`. If the package is missing, you MUST output the installation command (e.g. `npm install package-name`) before providing the code. **Never** assume a library exists.
+* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). 
+    * **RSC SAFETY:** Global state (Context/Zustand) works ONLY in Client Components. In Next.js, you MUST wrap global state providers in a separate `"use client"` component (e.g. `providers.tsx`) before including them in the `layout.tsx` tree.
+* **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state strictly for deep prop-drilling avoidance.
+* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling. 
+    * **TAILWIND VERSION LOCK:** Check `package.json` first. Do not use v4 syntax in v3 projects. 
+    * **T4 CONFIG GUARD:** For v4, do NOT use `tailwindcss` plugin in `postcss.config.js`. Use `@tailwindcss/postcss` or the Vite plugin.
+* **ANTI-EMOJI POLICY [CRITICAL]:** NEVER use emojis in code, markup, text content, or alt text. Replace symbols with high-quality icons (Radix, Phosphor) or clean SVG primitives. Emojis are BANNED.
+* **Responsiveness & Spacing:**
+  * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
+  * Contain page layouts using `max-w-7xl mx-auto`.
+  * Adhere strictly to a 4px baseline grid (e.g., standardizing on Tailwind's `gap-4`, `p-8` scales).
+* **Icons:** Phosphor Icons or Radix UI Icons. **Mandatory:** Standardize `strokeWidth` globally (e.g., exclusively use `1.5` or `2.0`).
+
 
 ## 3. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:
