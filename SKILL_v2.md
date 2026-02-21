@@ -8,12 +8,12 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 ## 1. DEFAULT ARCHITECTURE & CONVENTIONS
 Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
 
-* **Framework:** React or Next.js. Default to Server Components (`RSC`). Use Client Components (`"use client"`) strictly at the leaf level for stateful or interactive UI.
+* **Framework & Interactivity:** React or Next.js. Default to Server Components (`RSC`). Use Client Components (`"use client"`) strictly at the leaf level. **Never** use arbitrary Vanilla JS DOM manipulation (e.g., `document.querySelector`, `el.addEventListener`). Use `useRef` and `useEffect` for DOM events, or prefer `framer-motion` for complex physical animations. `useEffect` cleanup functions are mandatory to prevent Virtual DOM conflicts and memory leaks.
 * **Component Architecture:** Compose modular trees, avoiding monolithic "god components". Organize intuitively:
   * Layout/Sections: `/components/sections/*` (e.g. `TableSection`)
   * UI Primitives / Complex Compounds: `/components/ui/*` (e.g. `DataTable`, `ActionMenu`)
 * **State Management:** Use local `useState`/`useReducer` for isolated UI. Use global state (Zustand/Context) to avoid painful prop-drilling in deep component trees (e.g., an audio player controlled from distant child components).
-* **Styling:** Tailwind CSS (v3 or v4).
+* **Styling Policy:** Use Tailwind CSS (v3/v4) for 90% of styling (layout, colors, spacing). Use raw CSS (or CSS Modules) ONLY for complex `@keyframes`, `clamp()` typography, and pseudo-element grain filters where inline Tailwind strings become unreadable or impossible.
 * **Responsiveness & Spacing:**
   * Standardize breakpoints (`sm`, `md`, `lg`, `xl`).
   * Contain page layouts using `max-w-7xl mx-auto`.
@@ -76,7 +76,7 @@ To actively combat generic AI designs, systematically implement these high-end c
 * **Staggered Orchestration:** Do not mount lists or grids instantly. Use `staggerChildren` (Framer) or CSS cascade (`animation-delay: calc(var(--index) * 100ms)`) to create sequential waterfall reveals. 
 
 ## 5. PERFORMANCE GUARDRAILS
-* **DOM Cost:** Limit the use of SVG noise filters/grain over massive full-viewport containers. Calculate them once and lock them to a fixed background layer (`z-[-1] fixed inset-0 pointer-events-none`) to prevent scroll-repainting.
+* **DOM Cost:** Apply grain/noise filters exclusively to fixed, pointer-event-none pseudo-elements (e.g., `fixed inset-0 z-50 pointer-events-none`) and NEVER to scrolling containers to prevent continuous GPU repaints and mobile performance degradation.
 * **Hardware Acceleration:** Never animate `top`, `left`, `width`, or `height`. Animate exclusively via `transform` and `opacity`.
 
 ## 6. PRE-FLIGHT CHECK
