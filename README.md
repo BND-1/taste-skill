@@ -1,4 +1,4 @@
-# Taste Skill (High-Agency Frontend)
+# Design Taste (Frontend Engineering)
 
 A skill for AI coding agents to build high-end, premium frontend interfaces. The goal is to eradicate generic "AI slop" (Probability Collapse) and enforce strict engineering metrics, CSS hardware acceleration, and balanced design architectures.
 
@@ -6,7 +6,7 @@ A skill for AI coding agents to build high-end, premium frontend interfaces. The
 
 ## How It Works
 
-This repository contains the **High-Agency Frontend Skill** (`SKILL.md`), which serves as a hardcore prompt and rulebook for LLM-based coding agents (like Claude, Cursor, v0, etc.).
+This repository contains the **Design Taste Frontend Skill** (`SKILL.md`), which serves as a hardcore prompt and rulebook for LLM-based coding agents (like Claude, Cursor, v0, etc.).
 
 Instead of just telling the AI "don't make it look bad," this skill establishes a deterministic engineering framework:
 - **Strict Component Architecture:** Prevents "God Components" by enforcing modular React trees and strict Layout vs. UI Primitive separation.
