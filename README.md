@@ -1,74 +1,73 @@
-# Taste-Skill (High-Agency Frontend)
+# Taste-Skill (高审美前端)
 
-This project gives your AI (like in Antigravity, Cursor, Codex, Claude Code) good taste. It stops the AI from generating boring, generic, "slop" code and forces it to build modern, high-end interfaces.
+这个项目让你的 AI（Cursor、Claude Code、Codex、Windsurf 等）拥有真正的设计品味。它能阻止 AI 生成那些千篇一律、毫无特色的"泡沫代码"，强制它构建现代、高端的界面。
 
-Right now, this whole system runs on just one single file: `SKILL.md`.
-
-
-## IMPORTANT: Feedback & Contributions
-I’d love to hear your thoughts! If you have suggestions or find any bugs:
-
-Open a Pull Request or Issue right here on GitHub.
-
-Shoot me a DM on x.com/lexnlin
-
-Or email me at: hello@learn2vibecode.dev
+整个系统只靠一个文件运行：`SKILL.md`。
 
 
-## How to Install
+## 反馈与贡献
 
-### Method 1: npx one-click install (Recommended)
+欢迎提出建议或反馈 Bug：
+
+- 在 GitHub 上提 Pull Request 或 Issue
+- 在 x.com/lexnlin 给我发私信
+- 邮件联系：hello@learn2vibecode.dev
+
+
+## 安装方式
+
+### 方式一：npx 一键安装（推荐）
 
 ```bash
 npx skills add https://github.com/BND-1/taste-skill.git
 ```
 
-This will automatically install `SKILL.md` to the correct skills directory for your AI agent (Claude Code, Cursor, etc.).
+自动将 `SKILL.md` 安装到你的 AI 代理（Claude Code、Cursor 等）的 skills 目录中。
 
-You can also install it globally so it works across all your projects:
+也可以全局安装，这样所有项目都能生效：
 
 ```bash
 npx skills add https://github.com/BND-1/taste-skill.git -g
 ```
 
-### Method 2: Manual Download
+### 方式二：手动下载
 
-1. Download the `SKILL.md` file from this repository.
-2. Put it into your project folder.
-3. Tell your AI (in your prompt or chat): *"Please read and strictly follow the rules in `SKILL.md`."* (In editors like Cursor, you can just `@SKILL.md`).
+1. 从本仓库下载 `SKILL.md` 文件
+2. 放到你的项目文件夹中
+3. 告诉你的 AI："请严格遵循 `SKILL.md` 中的规则"（在 Cursor 中可以直接 `@SKILL.md`）
 
-That's it. The AI will read the file and instantly upgrade how it writes frontend code.
+就这么简单，AI 会立刻升级它的前端代码质量。
 
-## The 3 Control Dials
+## 三个控制旋钮
 
-At the very top of `SKILL.md`, you will find three settings. They look like this:
+在 `SKILL.md` 的最顶部，你会看到三个设置参数：
 * `DESIGN_VARIANCE: 8`
 * `MOTION_INTENSITY: 6`
 * `VISUAL_DENSITY: 4`
 
-You can change these numbers from `1` to `10` depending on what you want to build. Here is what they actually do:
+你可以把这些数值调整为 `1` 到 `10`，具体含义如下：
 
-### 1. DESIGN_VARIANCE (1 to 10)
-This controls how crazy or normal the layout looks.
-* **1 to 3 (Normal):** Very safe, centered layouts. Standard grids where everything lines up perfectly.
-* **4 to 7 (Creative):** Things overlap a bit. Text might be pushed to the side, images have different sizes.
-* **8 to 10 (Wild):** Asymmetric layouts, huge empty spaces, masonry grids. Very artsy and modern.
+### 1. DESIGN_VARIANCE 设计差异度（1 到 10）
+控制布局的大胆程度。
+* **1 到 3（常规）：** 安全、居中的布局，标准网格，一切整齐排列。
+* **4 到 7（创意）：** 元素开始有重叠，文字可能偏向一侧，图片大小各异。
+* **8 到 10（狂野）：** 非对称布局、大面积留白、瀑布流网格，非常艺术和现代。
 
-### 2. MOTION_INTENSITY (1 to 10)
-This controls how much stuff moves on the screen.
-* **1 to 3 (Static):** Almost no movement. Just simple color changes when you hover over a button.
-* **4 to 7 (Smooth):** Nice fade-ins when the page loads. Smooth scrolling.
-* **8 to 10 (Cinematic):** Buttons that magnetic-pull to your mouse. Elements that pop in with spring physics. Advanced scrolling effects.
+### 2. MOTION_INTENSITY 动效强度（1 到 10）
+控制页面上有多少东西在动。
+* **1 到 3（静态）：** 几乎没有动画，只有悬停时的简单颜色变化。
+* **4 到 7（流畅）：** 页面加载时有漂亮的淡入效果，丝滑的滚动体验。
+* **8 到 10（电影级）：** 按钮会被鼠标磁性吸引，元素以弹簧物理弹入，高级滚动特效。
 
-### 3. VISUAL_DENSITY (1 to 10)
-This is all about "Room to Breathe". It controls how much stuff is packed onto one screen.
+### 3. VISUAL_DENSITY 视觉密度（1 到 10）
+控制一屏内塞了多少内容，也就是"呼吸感"。
 
-* **1 to 3 (The "Art Gallery" Mode):** 
-  Everything has huge space. One big photo, one big title. You have to scroll to see the next thing. This feels expensive and high-end, like a luxury brand (Apple, Gucci).
-* **4 to 7 (The "Daily App" Mode):** 
-  Normal spacing. Like Instagram or a news site. Not too crowded, but you can see enough.
-* **8 to 10 (The "Cockpit" Mode):** 
-  Everything is tiny and packed together. No big cards, just thin lines and lists. You can see 100 numbers and stats at once without scrolling. This is for pros (Trading apps, Dashboards, Sci-Fi interfaces).
+* **1 到 3（"美术馆"模式）：**
+  大量留白，一张大图、一个大标题，需要滚动才能看到下一项内容。感觉高端奢华，像 Apple、Gucci 的风格。
+* **4 到 7（"日常应用"模式）：**
+  正常间距，像 Instagram 或新闻网站，不太拥挤，但内容充足。
+* **8 到 10（"驾驶舱"模式）：**
+  所有东西都很小且紧凑，没有大卡片，只有细线和列表。一屏能看到上百个数据，不用滚动。适合专业场景（交易应用、仪表盘、科幻界面）。
 
-## Examples
-*(Example projects and templates will be added in a future update! Stay tuned!)*
+## 示例
+*（示例项目和模板将在后续更新中添加，敬请期待！）*
