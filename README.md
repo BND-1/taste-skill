@@ -17,7 +17,21 @@ Or email me at: hello@learn2vibecode.dev
 
 ## How to Install
 
-You don't need to clone this whole project or do any complex setup. You just need the file.
+### Method 1: npx one-click install (Recommended)
+
+```bash
+npx skills add https://github.com/BND-1/taste-skill.git
+```
+
+This will automatically install `SKILL.md` to the correct skills directory for your AI agent (Claude Code, Cursor, etc.).
+
+You can also install it globally so it works across all your projects:
+
+```bash
+npx skills add https://github.com/BND-1/taste-skill.git -g
+```
+
+### Method 2: Manual Download
 
 1. Download the `SKILL.md` file from this repository.
 2. Put it into your project folder.
