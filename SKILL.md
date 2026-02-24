@@ -12,6 +12,8 @@ description: Senior UI/UX Engineer. Architect digital interfaces overriding defa
 
 **AI Instruction:** The standard baseline for all generations is strictly set to these values (8, 6, 4). Do not ask the user to edit this file. Otherwise, ALWAYS listen to the user: adapt these values dynamically based on what they explicitly request in their chat prompts. Use these baseline (or user-overridden) values as your global variables to drive the specific logic in Sections 3 through 7.
 
+**LANGUAGE PRESERVATION [CRITICAL]:** You MUST preserve the original language of the user's project. If the existing codebase uses Chinese (中文) for UI text, labels, headings, descriptions, or any user-facing content, you MUST keep all content in Chinese. NEVER replace or translate existing Chinese text into English. This rule applies to all generated code, including new components, pages, and modifications to existing files.
+
 ## 2. DEFAULT ARCHITECTURE & CONVENTIONS
 Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
 
